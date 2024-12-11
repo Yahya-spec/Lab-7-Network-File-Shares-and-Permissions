@@ -25,7 +25,7 @@ In this hands-on lab, I will configure multiple network file shares and assign t
 2. **Log into Client-1** as a normal user (`mydomain\<someuser>`).
 3. On **DC-1**, create 4 folders on the `C:\` drive: “read-access”, “write-access”, “no-access”, “accounting”.
 
-   ![image](https://github.com/user-attachments/assets/d9531b1c-9d69-4e52-9f41-a5528532213e)
+![r1](https://github.com/user-attachments/assets/2be36129-98cd-4400-a4d3-87470aedd9f4)
 
 4. Set the following permissions for each folder (share the folder):
    - **Folder**: “read-access”, **Group**: “Domain Users”, **Permission**: “Read”
@@ -33,14 +33,14 @@ In this hands-on lab, I will configure multiple network file shares and assign t
    - **Folder**: “no-access”, **Group**: “Domain Admins”, **Permission**: “Read/Write”
    - **(Skip accounting for now)**
 
-   ![image](https://github.com/user-attachments/assets/970aaaea-5d3f-45c1-a5a4-9beace95f48c)
+![r2](https://github.com/user-attachments/assets/442fe0ff-3312-4f64-aced-07433a332f87)
 
 ## Attempt to Access File Shares as a Normal User
 
 5. On **Client-1**, navigate to the shared folder (`start`, `run`, `\\dc-1`).
 6. Try to access the folders you created. Which folders can you access? Which folders can you create content in? Does this make sense?
 
-   ![image](https://github.com/user-attachments/assets/89a1ebd8-8da3-42c8-b67b-5c7de4854c2f)
+![r3](https://github.com/user-attachments/assets/10407c2d-968b-415c-930d-58c62b0feab6)
    
    *Observation*: Logged in as a user (`kax.mib`), I can access both the **read-access** and **write-access** folders because I allowed it from the DC-1 VM as an admin (`jane_admin`). However, I can only create/save/write files in the **write-access** folder and not in **read-access** due to the permissions set.
 
@@ -48,25 +48,25 @@ In this hands-on lab, I will configure multiple network file shares and assign t
 
 7. Go back to **DC-1**, in **Active Directory**, and create a security group called “ACCOUNTANTS”.
 
-   ![image](https://github.com/user-attachments/assets/00ae3dfc-1614-4dd5-87c8-ef98d933a170)
+![r4](https://github.com/user-attachments/assets/6bc226a9-3111-48f9-a69b-045df16df9ed)
 
 8. On the **accounting** folder, set the following permissions:
    - **Folder**: “accounting”, **Group**: “ACCOUNTANTS”, **Permission**: “Read/Write”
 
-   ![image](https://github.com/user-attachments/assets/80aabe8d-c4a8-4a3d-8163-f05a215970a2)
+![r5](https://github.com/user-attachments/assets/973a0c71-f341-48ca-80af-4104a43503bf)
 
 9. On **Client-1**, try to access the **accountants** folder. It should fail.
 
-   ![image](https://github.com/user-attachments/assets/5dd2347c-3df5-4557-a107-cfde13cccb98)
+![r6](https://github.com/user-attachments/assets/1be0886b-5632-42aa-bb05-f89bc156f707)
 
 10. **Log out** of Client-1 as `<someuser>`.
 11. On **DC-1**, make the user a member of the “ACCOUNTANTS” security group.
 
-   ![image](https://github.com/user-attachments/assets/6c2eb1da-def7-4814-89f3-9f33e45fac5b)
+![r7](https://github.com/user-attachments/assets/e7c4b88d-9816-4bad-97d8-e52a81c0a88b)
 
 12. Sign back into **Client-1** as `<someuser>` and try to access the “accounting” share on `\\DC-1`.
 
-   ![image](https://github.com/user-attachments/assets/802f17f4-8d0b-4ef5-8a2e-a43e05d4c20b)
+![r8](https://github.com/user-attachments/assets/bb0c638e-84c7-4ab4-bdae-c3f5feeea464)
    
 ---
 
